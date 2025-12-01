@@ -1,17 +1,18 @@
 package storage
 
 import (
-	"backlog/models"
 	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
+
+	"github.com/vvb/backlog/models"
 )
 
 const (
-	backlogDir      = "backlog"
-	backlogFile     = "items.json"
-	archiveFile     = "archive.json"
+	backlogDir  = "backlog"
+	backlogFile = "items.json"
+	archiveFile = "archive.json"
 )
 
 // Storage handles reading and writing backlog data
@@ -27,7 +28,7 @@ func New() (*Storage, error) {
 	}
 
 	dataDir := filepath.Join(homeDir, backlogDir)
-	
+
 	// Create directory if it doesn't exist
 	if err := os.MkdirAll(dataDir, 0755); err != nil {
 		return nil, fmt.Errorf("failed to create backlog directory: %w", err)
@@ -39,7 +40,7 @@ func New() (*Storage, error) {
 // Load reads the backlog from the JSON file
 func (s *Storage) Load() (*models.Backlog, error) {
 	filePath := filepath.Join(s.dataDir, backlogFile)
-	
+
 	// If file doesn't exist, return empty backlog
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 		return &models.Backlog{Items: []models.BacklogItem{}}, nil
@@ -61,7 +62,7 @@ func (s *Storage) Load() (*models.Backlog, error) {
 // Save writes the backlog to the JSON file
 func (s *Storage) Save(backlog *models.Backlog) error {
 	filePath := filepath.Join(s.dataDir, backlogFile)
-	
+
 	data, err := json.MarshalIndent(backlog, "", "  ")
 	if err != nil {
 		return fmt.Errorf("failed to marshal backlog: %w", err)
@@ -77,7 +78,7 @@ func (s *Storage) Save(backlog *models.Backlog) error {
 // LoadArchive reads the archived items from the JSON file
 func (s *Storage) LoadArchive() (*models.Backlog, error) {
 	filePath := filepath.Join(s.dataDir, archiveFile)
-	
+
 	// If file doesn't exist, return empty backlog
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 		return &models.Backlog{Items: []models.BacklogItem{}}, nil
@@ -99,7 +100,7 @@ func (s *Storage) LoadArchive() (*models.Backlog, error) {
 // SaveArchive writes the archived items to the JSON file
 func (s *Storage) SaveArchive(backlog *models.Backlog) error {
 	filePath := filepath.Join(s.dataDir, archiveFile)
-	
+
 	data, err := json.MarshalIndent(backlog, "", "  ")
 	if err != nil {
 		return fmt.Errorf("failed to marshal archive: %w", err)
@@ -111,4 +112,3 @@ func (s *Storage) SaveArchive(backlog *models.Backlog) error {
 
 	return nil
 }
-

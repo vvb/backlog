@@ -1,4 +1,4 @@
-module backlog
+module github.com/vvb/backlog
 
 go 1.24.0
 

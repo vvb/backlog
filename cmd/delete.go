@@ -1,12 +1,12 @@
 package cmd
 
 import (
-	"backlog/models"
-	"backlog/storage"
 	"fmt"
 	"strings"
 
 	"github.com/spf13/cobra"
+	"github.com/vvb/backlog/models"
+	"github.com/vvb/backlog/storage"
 )
 
 var deleteCmd = &cobra.Command{

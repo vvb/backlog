@@ -1,13 +1,13 @@
 package cmd
 
 import (
-	"backlog/models"
-	"backlog/storage"
 	"fmt"
 	"strings"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/spf13/cobra"
+	"github.com/vvb/backlog/models"
+	"github.com/vvb/backlog/storage"
 )
 
 var interactive bool

@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"backlog/models"
-	"backlog/storage"
 	"fmt"
 	"strings"
 	"time"
@@ -10,6 +8,8 @@ import (
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
+	"github.com/vvb/backlog/models"
+	"github.com/vvb/backlog/storage"
 )
 
 type reloadMsg struct {

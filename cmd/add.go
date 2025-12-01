@@ -1,13 +1,13 @@
 package cmd
 
 import (
-	"backlog/models"
-	"backlog/storage"
 	"fmt"
 	"strings"
 	"time"
 
 	"github.com/spf13/cobra"
+	"github.com/vvb/backlog/models"
+	"github.com/vvb/backlog/storage"
 )
 
 var (
@@ -96,4 +96,3 @@ func isValidDateFormat(date string) bool {
 func generateID() string {
 	return fmt.Sprintf("%d", time.Now().UnixNano())
 }
-

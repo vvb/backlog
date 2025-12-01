@@ -1,12 +1,12 @@
 package cmd
 
 import (
-	"backlog/models"
-	"backlog/storage"
 	"fmt"
 	"strings"
 
 	"github.com/spf13/cobra"
+	"github.com/vvb/backlog/models"
+	"github.com/vvb/backlog/storage"
 )
 
 var searchCmd = &cobra.Command{
@@ -90,4 +90,3 @@ func displayItem(item models.BacklogItem) {
 	fmt.Printf("Created: %s\n", item.CreatedAt.Format("02-01-2006 15:04"))
 	fmt.Printf("Updated: %s\n", item.UpdatedAt.Format("02-01-2006 15:04"))
 }
-

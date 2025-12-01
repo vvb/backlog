@@ -1,13 +1,13 @@
 package cmd
 
 import (
-	"backlog/models"
-	"backlog/storage"
 	"fmt"
 	"strings"
 	"time"
 
 	"github.com/spf13/cobra"
+	"github.com/vvb/backlog/models"
+	"github.com/vvb/backlog/storage"
 )
 
 var (
@@ -53,7 +53,7 @@ var updateCmd = &cobra.Command{
 		for i := range backlog.Items {
 			if strings.HasPrefix(backlog.Items[i].ID, id) {
 				found = true
-				
+
 				// Update fields
 				if updateTitle != "" {
 					backlog.Items[i].Title = updateTitle
@@ -74,14 +74,14 @@ var updateCmd = &cobra.Command{
 				if updateStatus != "" {
 					backlog.Items[i].Status = models.Status(updateStatus)
 				}
-				
+
 				backlog.Items[i].UpdatedAt = time.Now()
-				
+
 				// Save
 				if err := store.Save(backlog); err != nil {
 					return err
 				}
-				
+
 				fmt.Printf("✓ Updated backlog item: %s\n", backlog.Items[i].Title)
 				break
 			}
@@ -102,4 +102,3 @@ func init() {
 	updateCmd.Flags().StringVar(&updateTags, "tags", "", "New comma-separated tags")
 	updateCmd.Flags().StringVar(&updateStatus, "status", "", "New status (todo, in-progress, done)")
 }
-

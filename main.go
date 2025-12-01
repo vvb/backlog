@@ -1,9 +1,10 @@
 package main
 
 import (
-	"backlog/cmd"
 	"fmt"
 	"os"
+
+	"github.com/vvb/backlog/cmd"
 )
 
 func main() {
@@ -12,4 +13,3 @@ func main() {
 		os.Exit(1)
 	}
 }
-

@@ -1,11 +1,11 @@
 package cmd
 
 import (
-	"backlog/models"
-	"backlog/storage"
 	"fmt"
 
 	"github.com/spf13/cobra"
+	"github.com/vvb/backlog/models"
+	"github.com/vvb/backlog/storage"
 )
 
 var archiveCmd = &cobra.Command{
@@ -65,4 +65,3 @@ var archiveCmd = &cobra.Command{
 		return nil
 	},
 }
-
