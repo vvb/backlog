@@ -1,0 +1,40 @@
+# Go build artifacts
+bl
+bl.exe
+bl.test
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binaries & coverage
+*.test
+*.out
+coverage.out
+
+# Output directories
+/bin/
+/build/
+/dist/
+/tmp/
+
+# Dependency / module tooling (keep go.mod and go.sum tracked)
+/vendor/
+
+# IDE & editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
