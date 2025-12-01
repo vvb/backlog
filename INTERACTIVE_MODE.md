@@ -5,13 +5,15 @@ The interactive mode provides a rich, keyboard-driven interface for managing you
 ## Starting Interactive Mode
 
 ```bash
-bl list -i
+backlog
 ```
 
-or
+This is equivalent to:
 
 ```bash
-bl list --interactive
+backlog list -i
+# or
+backlog list --interactive
 ```
 
 ## Interface Layout
@@ -67,7 +69,7 @@ bl list --interactive
 
 ## Workflow Example
 
-1. Start interactive mode: `bl list -i`
+1. Start interactive mode: `backlog`
 2. Use `→` to navigate to the TODO column
 3. Use `↓` to select an item you want to work on
 4. Press `2` to move it to IN PROGRESS
@@ -147,12 +149,12 @@ The kanban board automatically adjusts to your terminal width:
 
 | Task | CLI Command | Interactive Mode |
 |------|-------------|------------------|
-| Add new item | `bl add "title" --desc "..." --due "..." --tags "..."` | Press `a` + fill form |
-| Edit item details | `bl update 176457 --title "..." --desc "..." --due "..." --tags "..."` | Navigate + press `Enter` + edit + Esc |
-| Move item to in-progress | `bl update 176457 --status in-progress` | Navigate + press `2` |
-| Delete an item | `bl delete 176457` | Navigate + press `d` |
-| Search items | `bl search "keyword"` | Press `s` + type query + Enter |
-| View all items | `bl list` | `bl list -i` (with navigation) |
+| Add new item | `backlog add "title" --desc "..." --due "..." --tags "..."` | Press `a` + fill form |
+| Edit item details | `backlog update 176457 --title "..." --desc "..." --due "..." --tags "..."` | Navigate + press `Enter` + edit + Esc |
+| Move item to in-progress | `backlog update 176457 --status in-progress` | Navigate + press `2` |
+| Delete an item | `backlog delete 176457` | Navigate + press `d` |
+| Search items | `backlog search "keyword"` | Press `s` + type query + Enter |
+| View all items | `backlog list` | `backlog` (or `backlog list -i`) |
 | Multiple updates | Multiple commands | Quick keyboard shortcuts |
 
 Interactive mode is perfect for:

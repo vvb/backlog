@@ -5,7 +5,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "bl",
+	Use:   "backlog",
 	Short: "Backlog - A terminal application for managing backlog items",
 	Long:  `Backlog is a CLI tool for creating and managing backlog items with a Kanban-style board view.`,
 }
@@ -23,4 +23,3 @@ func init() {
 	rootCmd.AddCommand(searchCmd)
 	rootCmd.AddCommand(archiveCmd)
 }
-

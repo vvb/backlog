@@ -15,17 +15,25 @@ A simple and efficient terminal application for managing backlog items with a Ka
 
 ## Installation
 
+### Install with `go install` (recommended)
+
+```bash
+go install github.com/vvb/backlog@latest
+```
+
+Make sure your `GOPATH/bin` (or Go's install bin directory) is on your `PATH` so the `backlog` binary is available.
+
 ### Build from source
 
 ```bash
-go build -o bl
+go build -o backlog
 ```
 
-### Install globally (optional)
+### Install globally from local build (optional)
 
 ```bash
 # Move the binary to a location in your PATH
-sudo mv bl /usr/local/bin/
+sudo mv backlog /usr/local/bin/
 ```
 
 ## Usage
@@ -33,7 +41,7 @@ sudo mv bl /usr/local/bin/
 ### Add a new backlog item
 
 ```bash
-bl add "Task title" --desc "Description" --due "15-12-2025" --tags "tag1,tag2"
+backlog add "Task title" --desc "Description" --due "15-12-2025" --tags "tag1,tag2"
 ```
 
 **Options:**
@@ -45,14 +53,16 @@ bl add "Task title" --desc "Description" --due "15-12-2025" --tags "tag1,tag2"
 
 **Static view:**
 ```bash
-bl list
+backlog list
 ```
 
-**Interactive mode:**
+**Interactive mode (default):**
 ```bash
-bl list -i
+backlog           # defaults to interactive list view
 # or
-bl list --interactive
+backlog list -i
+# or
+backlog list --interactive
 ```
 
 In interactive mode, you can:
@@ -92,9 +102,9 @@ When you press `s`, a search prompt appears where you can:
 ### Update a backlog item
 
 ```bash
-bl update <id> --status in-progress
-bl update <id> --title "New title" --desc "New description"
-bl update <id> --due "20-12-2025" --tags "new,tags"
+backlog update <id> --status in-progress
+backlog update <id> --title "New title" --desc "New description"
+backlog update <id> --due "20-12-2025" --tags "new,tags"
 ```
 
 **Options:**
@@ -107,13 +117,13 @@ bl update <id> --due "20-12-2025" --tags "new,tags"
 ### Delete a backlog item
 
 ```bash
-bl delete <id>
+backlog delete <id>
 ```
 
 ### Search for items
 
 ```bash
-bl search "keyword"
+backlog search "keyword"
 ```
 
 Searches in title, description, and tags.
@@ -121,7 +131,7 @@ Searches in title, description, and tags.
 ### Archive completed items
 
 ```bash
-bl archive
+backlog archive
 ```
 
 Moves all items with "done" status to `~/backlog/archive.json`.
@@ -136,27 +146,29 @@ All data is stored in JSON format in the `~/backlog` directory:
 
 ```bash
 # Add a new task
-bl add "Implement user authentication" --desc "Add login and signup" --due "15-12-2025" --tags "backend,security"
+backlog add "Implement user authentication" --desc "Add login and signup" --due "15-12-2025" --tags "backend,security"
 
 # View the board (static)
-bl list
+backlog list
 
-# View the board (interactive mode)
-bl list -i
+# View the board (interactive mode - default)
+backlog
+# or
+backlog list -i
 
 # Move task to in-progress (CLI)
-bl update 176457 --status in-progress
+backlog update 176457 --status in-progress
 
 # Or use interactive mode to move items with keyboard shortcuts!
 
 # Search for tasks
-bl search "authentication"
+backlog search "authentication"
 
 # Archive completed tasks
-bl archive
+backlog archive
 
 # Delete a task
-bl delete 176457
+backlog delete 176457
 ```
 
 ## ID Usage
@@ -165,7 +177,7 @@ You can use partial IDs when updating or deleting items. The application will ma
 
 For example, if an item has ID `1764579489317886000`, you can use:
 ```bash
-bl update 176457 --status done
+backlog update 176457 --status done
 ```
 
 ## License
